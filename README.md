@@ -5,13 +5,15 @@ Implementation of "Otto Grader"-- a student grade manage system
 - Enroll a new student to a given course
 - Update the record of a student’s grades
 
-## Grade Manage System Structure & Architecture
+## OttoGrader Grade Manage System Structure & Architecture
 The code to run the Otto Grader application relies on the following classes
-## OttoGrader
+
+
 - Student
 - Course
 - CreditCourse (inherits from Course)
 - NonCreditCourse (inherits from Course)
+- OttoGrader
 The entry point into the application is the `main.py` file, which handles the overall application logic
 
 ## Summary
