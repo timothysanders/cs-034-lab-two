@@ -1,11 +1,11 @@
 # cs-034-lab-two
-Implementation of "Otto Grader"
+Implementation of "Otto Grader"-- student grade manage system
 
 ## Purpose
 - Enroll a new student to a given course
 - Update the record of a student’s grades
 
-## Overall Structure
+## Grade Manage System Structure & Architecture
 The code to run the Otto Grader application relies on the following classes
 ## OttoGrader
 - Student
@@ -28,7 +28,7 @@ but also is convenient for us to adapt and extend our codes for different scenar
 
 - The abstract base class Course outlines the needed abstract methods for its derived classes NoncreditCourse
   and CreditCourse. When it comes to the concrete implementation for these methods, we are applying the principle
-  of Polymorphism to redefine or overload these abstract methods for NoncreditCourse and CreditCourse respectively)
+  of Polymorphism to redefine or overload these abstract methods for NoncreditCourse and CreditCourse respectively
 
 
 ## Running the code
