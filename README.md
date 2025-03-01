@@ -14,6 +14,7 @@ The code to run the Otto Grader application relies on the following classes
 - CreditCourse (inherits from Course)
 - NonCreditCourse (inherits from Course)
 - OttoGrader
+
 The entry point into the application is the `main.py` file, which handles the overall application logic
 
 ## Summary
