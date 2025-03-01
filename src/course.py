@@ -1,7 +1,12 @@
+from abc import ABC, abstractmethod
+
 from src.student import Student
 
 
-class Course:
+class Course(ABC):
+    """
+    Abstract class to represent a course.
+    """
 
     def __init__(self, course_code: str, course_name: str):
         self._course_code = course_code
@@ -73,22 +78,14 @@ class Course:
         else:
             raise ValueError(f"Student {student.get_name()} is not enrolled in {self._course_name}.")
 
+    @abstractmethod
     def get_course_info(self):
-        """Retrieve detailed course information"""
-        enrolled_students = {
-            student_dic["student"]._id: {"name": student["student"]._name, "grade": student["grade"]}
-            for student_dic in self._students.values()
-        }
-        return {
-            "Course Code": self._code,
-            "Course Name": self._name,
-            "Credit": self._credit,
-            "Enrolled Students": enrolled_students
-        }
+        pass
 
+    @abstractmethod
     def __str__(self):
         """String representation of the course object."""
-        return f"Course: {self._course_code}-{self._course_name}, Enrolled: {len(self._students)}) students"
+        pass
 
 
 
@@ -97,18 +94,24 @@ class CreditCourse(Course):
         super().__init__(course_id, course_name)
         self.credits = course_credits
 
+    def get_course_info(self):
+        pass
+
     def __str__(self):
         """String representation of the credit course."""
-        return f"{self._course_code}-{self._course_name}: {self.credits} credit course, Enrolled: {len(self._students)}) students"
+        return f"{self._course_code}: {self._course_name} ({self.credits} credit course, {len(self._students)} student(s) enrolled)"
 
 class NonCreditCourse(Course):
     def __init__(self, course_id, course_name):
         super().__init__(course_id, course_name)
         self.credits = None
 
+    def get_course_info(self):
+        pass
+
     def __str__(self):
         """String representation of the non-credit course."""
-        return f"{self._course_code}-{self._course_name}: non-credit course, Enrolled: {len(self._students)}) students"
+        return f"{self._course_code}: {self._course_name} (non-credit course, {len(self._students)} student(s) enrolled)"
 
 
 # Test cases
