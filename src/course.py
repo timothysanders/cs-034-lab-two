@@ -3,21 +3,29 @@ from src.student import Student
 
 class Course:
 
-    def __init__(self, course_code, course_name):
+    def __init__(self, course_code: str, course_name: str):
         self._course_code = course_code
         self._course_name = course_name
         self._students = {}
 
-    def get_course_code(self):
+    def get_course_code(self) -> str:
+        """
+        Return the course code.
+
+        Returns
+        -------
+        str
+        """
         return self._course_code
 
-    def add_student(self, student):
+    def add_student(self, student: Student) -> None:
         """
         Enroll a student in the course.
 
         Parameters
         ----------
-        student
+        student : Student
+
         Returns
         -------
         None
@@ -28,8 +36,19 @@ class Course:
         else:
             print(f"Student {student.get_id()} is already enrolled in {self._course_name}.")
 
-    def add_grade(self, student, grade):
-        """Assign a grade to an enrolled student"""
+    def add_grade(self, student: Student, grade: float) -> None:
+        """
+        Assign a grade to an enrolled student.
+
+        Parameters
+        ----------
+        student : Student
+        grade : float
+
+        Returns
+        -------
+        None
+        """
         if student.get_id() in self._students:
             student.add_grade(self, grade)  # Store grade in the current Student object
             self._students[student.get_id()]["grade"] = grade  # Sync with Course records
@@ -37,11 +56,22 @@ class Course:
         else:
             print(f"Student {student.get_name()} is not enrolled in {self._course_name}.")
 
-    def get_student_grade(self, student):
-        """Retrieve a student's grade for a given course"""
+    def get_student_grade(self, student: Student) -> float:
+        """
+        Retrieve a student's grade for a given course.
+
+        Parameters
+        ----------
+        student : Student
+
+        Returns
+        -------
+        float
+        """
         if student.get_id() in self._students:
             return self._students[student.get_id()]["grade"]
-        return f"Student {student.get_name()} is not enrolled in {self._course_name}."
+        else:
+            raise ValueError(f"Student {student.get_name()} is not enrolled in {self._course_name}.")
 
     def get_course_info(self):
         """Retrieve detailed course information"""
@@ -57,7 +87,7 @@ class Course:
         }
 
     def __str__(self):
-        """String representation of the course."""
+        """String representation of the course object."""
         return f"Course: {self._course_code}-{self._course_name}, Enrolled: {len(self._students)}) students"
 
 
