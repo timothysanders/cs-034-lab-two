@@ -12,7 +12,7 @@ class Student:
 
 
     def add_grade(self, course, grade): # Here "course" is an object of class Course
-        """Assigns or updates a grade for a course"""
+        """Updates a grade for a course"""
         self._student_data[self._id]["grades"][course._code] = grade
 
 
