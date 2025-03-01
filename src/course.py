@@ -19,9 +19,13 @@ class Course(ABC):
     Methods
     -------
     get_course_code()
+        Return the course code.
     add_student(student)
+        Enroll a student in the course.
     add_grade(student, grade)
+        Assign a grade to an enrolled student.
     get_student_grade(student)
+        Retrieve a student's grade for a given course.
     get_course_info()
         An abstract method to be implemented in subclasses.
     __str__()
@@ -110,27 +114,103 @@ class Course(ABC):
 
 
 class CreditCourse(Course):
-    def __init__(self, course_id, course_name, course_credits):
-        super().__init__(course_id, course_name)
+    """
+    Class to represent a course taken for credit.
+
+    Attributes
+    ----------
+    _course_code : str
+        The code associated with the course.
+    _course_name : str
+        The full name of the course.
+    _students : dict
+        Dictionary containing all students enrolled in this course.
+    credits : int
+        The number of credits the class is worth.
+
+    Methods
+    -------
+    get_course_code()
+        Return the course code.
+    add_student(student)
+        Enroll a student in the course.
+    add_grade(student, grade)
+        Assign a grade to an enrolled student.
+    get_student_grade(student)
+        Retrieve a student's grade for a given course.
+    get_course_info()
+        Return information on the course itself, including specific students enrolled.
+    __str__()
+        A string representation of the credit course.
+    """
+    def __init__(self, course_code: str, course_name: str, course_credits: int):
+        super().__init__(course_code, course_name)
         self.credits = course_credits
 
     def get_course_info(self):
+        """
+        Return information on the course itself, including specific students enrolled.
+        """
         pass
 
-    def __str__(self):
-        """String representation of the credit course."""
+    def __str__(self) -> str:
+        """
+        A string representation of the credit course.
+
+        Returns
+        -------
+        str
+        """
         return f"{self._course_code}: {self._course_name} ({self.credits} credit course, {len(self._students)} student(s) enrolled)"
 
 class NonCreditCourse(Course):
-    def __init__(self, course_id, course_name):
-        super().__init__(course_id, course_name)
-        self.credits = None
+    """
+    Class to represent a course taken for no credit.
 
+    Attributes
+    ----------
+    _course_code : str
+        The code associated with the course.
+    _course_name : str
+        The full name of the course.
+    _students : dict
+        Dictionary containing all students enrolled in this course.
+
+    Methods
+    -------
+    get_course_code()
+        Return the course code.
+    add_student(student)
+        Enroll a student in the course.
+    add_grade(student, grade)
+        Assign a grade to an enrolled student.
+    get_student_grade(student)
+        Retrieve a student's grade for a given course.
+    get_course_info()
+        Return information on the course itself, including specific students enrolled.
+    __str__()
+        A string representation of the credit course.
+    def __init__(self, course_code, course_name):
+        super().__init__(course_code, course_name)
+        self.credits = None
+    """
     def get_course_info(self):
+        """
+        Return information on the course itself, including specific students enrolled.
+
+        Returns
+        -------
+        """
         pass
 
-    def __str__(self):
-        """String representation of the non-credit course."""
+    def __str__(self) -> str:
+        """
+        A string representation of the non-credit course.
+
+        Returns
+        -------
+        str
+        """
         return f"{self._course_code}: {self._course_name} (non-credit course, {len(self._students)} student(s) enrolled)"
 
 
