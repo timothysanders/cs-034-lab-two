@@ -6,6 +6,26 @@ from src.student import Student
 class Course(ABC):
     """
     Abstract class to represent a course.
+
+    Attributes
+    ----------
+    _course_code : str
+        The code associated with the course.
+    _course_name : str
+        The full name of the course.
+    _students : dict
+        Dictionary containing all students enrolled in this course.
+
+    Methods
+    -------
+    get_course_code()
+    add_student(student)
+    add_grade(student, grade)
+    get_student_grade(student)
+    get_course_info()
+        An abstract method to be implemented in subclasses.
+    __str__()
+        An abstract method to be implemented in subclasses.
     """
 
     def __init__(self, course_code: str, course_name: str):
