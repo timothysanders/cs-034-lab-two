@@ -1,32 +1,32 @@
 from src.student import Student
 
 
-class Course():
+class Course:
 
     def __init__(self, course_code, course_name):
         self._course_code = course_code
         self._course_name = course_name
+        self._students = {}
 
     def get_course_code(self):
         return self._course_code
 
-    def add_student(self, student_id):
+    def add_student(self, student):
         """
         Enroll a student in the course.
 
         Parameters
         ----------
-        student_id : int
-
+        student
         Returns
         -------
         None
         """
-        if student._id not in self._students:
-            self._students[student._id] = {"student": student, "grade": None}
-            print(f"Student {student._name} enrolled in {self._name}.")
+        if student.get_id() not in self._students.keys():
+            self._students[student.get_id()] = student
+            print(f"Student {student.get_id()} enrolled in {self._course_name}.")
         else:
-            print(f"Student {student._name} is already enrolled in {self._name}.")
+            print(f"Student {student.get_id()} is already enrolled in {self._course_name}.")
 
     def add_grade(self, student_id, grade):
         """Assign a grade to an enrolled student"""
@@ -72,3 +72,7 @@ class NonCreditCourse(Course):
     def __init__(self, course_id, course_name):
         super().__init__(course_id, course_name)
         self.credits = None
+# Test cases
+if __name__ == "__main__":
+    print('Grade and course info for a student with only credit courses courses:')
+    print('Grade and course info for a student with an noncredit courses:')

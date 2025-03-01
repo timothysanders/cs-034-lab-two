@@ -1,8 +1,16 @@
+"""
+Class and method definitions for the OttoGrader class
+
+The OttoGrader class allows for the management of student and course (credit and non-credit) objects.
+Student objects can be associated with one or more Course objects and Course objects can be
+associated with one or more Student objects.
+"""
 from src.course import CreditCourse, NonCreditCourse
 from src.student import Student
 
 class OttoGrader:
     def __init__(self):
+        """Constructor for OttoGrader object"""
         self._students = {}
         self._courses = {}
 
@@ -58,13 +66,28 @@ class OttoGrader:
     def get_courses(self):
         return self._courses
 
-    def add_student_to_course(self, student, course_name):
-        course = self.get_course(course_name)
-        if course:
-            course.enroll_student(student)
-        else:
-            print(f"Course {course_name} not found.")
+    def add_student_to_course(self, student_id, course_code: str):
+        """
+        Add a student to a course based on either their name or identifier.
 
+        Parameters
+        ----------
+        student_id
+        course_id
+
+        Returns
+        -------
+
+        """
+        if course_code not in self._courses:
+            raise ValueError(f"Course {course_code} does not exist")
+        if student_id not in self._students:
+            raise ValueError(f"Student {student_id} does not exist")
+        self._courses[course_code].add_student(student_id)
+
+    def get_course(self, course_code):
+        return self._courses.get(course_code)
+    def get_student(self, student_id):return self._students.get(student_id)
     def record_grade(self, student_id, course_name, grade):
         course = self.get_course(course_name)
         if course:
