@@ -1,5 +1,5 @@
 # cs-034-lab-two
-Implementation of "Otto Grader"-- student grade manage system
+Implementation of "Otto Grader"-- a student grade manage system
 
 ## Purpose
 - Enroll a new student to a given course
