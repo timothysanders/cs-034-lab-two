@@ -7,7 +7,6 @@ class Student:
     def __init__(self, student_id: int, name: str):
         self._name = name
         self._id = student_id
-        self._courses = []
         if student_id not in self._student_data:
             self._student_data[student_id] = {
                 "name": name,
@@ -16,7 +15,7 @@ class Student:
 
     def add_grade(self, course, grade): # Here "course" is an object of class Course
         """Updates a grade for a course"""
-        self._student_data[self._id]["grades"][course.get_course_code()] = grade
+        self._student_data[self._id]["grades"][course.get_course_code()] = {"grade": grade, "credits": course.get_credits()}
 
 
     def get_grades(self):
@@ -26,9 +25,6 @@ class Student:
     def get_info(self):
         """Retrieves complete student information"""
         return self._student_data.get(self._id, "Student not found")
-
-    def add_course(self, course):
-        self._courses.append(course)
 
     def get_name(self):
         return self._name

@@ -48,7 +48,7 @@ class TestCreditCourse:
         credit_course.add_student(student)
         credit_course.add_grade(student, 90.0)
         assert credit_course._students[student.get_id()]["grade"] == 90.0
-        assert student.get_grades()["CS001"] == 90.0
+        assert student.get_grades()["CS001"]["grade"] == 90.0
 
     def test_credit_course_get_student_grade(self, credit_course, student):
         """Test retrieving a student's grade from a CreditCourse."""
@@ -92,7 +92,7 @@ class TestNonCreditCourse:
         non_credit_course.add_student(student)
         non_credit_course.add_grade(student, 90.0)
         assert non_credit_course._students[student.get_id()]["grade"] == 90.0
-        assert student.get_grades()["OLAD2900"] == 90.0
+        assert student.get_grades()["OLAD2900"]["grade"] == 90.0
 
     def test_non_credit_course_get_student_grade(self, non_credit_course, student):
         """Test retrieving a student's grade from a NonCreditCourse."""
