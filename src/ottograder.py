@@ -27,7 +27,7 @@ class OttoGrader:
         -------
         None
         """
-        new_student = Student(student_name, student_identifier)
+        new_student = Student(student_identifier, student_name)
         self._students[new_student.get_id()] = new_student
 
     def get_students(self):
