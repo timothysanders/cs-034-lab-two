@@ -30,6 +30,7 @@ class Student:
     __str__()
         ??? String representation for a Student object, the method "get_info" seems redundant
     """
+
     _student_data = {}
 
     def __init__(self, student_id: int, name: str):
