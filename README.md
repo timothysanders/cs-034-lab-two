@@ -27,13 +27,19 @@ but also is convenient for us to adapt and extend our codes for different scenar
 
 - Encapsulate each component (Student, Course, NoncreditCourse, CreditCourse, GradeManager) and its related
   operations in its respective class, making it easier to manage
-  
-- Apply Inheritance and Abstraction when we implement the abstract base class Course and its derived child classes
-  CreditCourse and NoncreditCourse
 
+- In our OOP OttoGrader, we pass objects of one class as parameters to the methods of another class, such as passing
+  an object of Student to the method of “add_student()” for the class Course, or passing an object of Course to the
+  method of “add_grade()” for the class Student. This enables us to interact with the passed object of a given class
+  in its corresponding receiving class, which is a practice of encapsulation. Here, the principle of abstraction also
+  works since the receiving class does not need to know the details of the passed object.
+  
 - The abstract base class Course outlines the needed abstract methods for its derived classes NoncreditCourse
   and CreditCourse. When it comes to the concrete implementation for these methods, we are applying the principle
   of Polymorphism to redefine or overload these abstract methods for NoncreditCourse and CreditCourse respectively
+
+- Apply Inheritance and Abstraction when we implement the abstract base class Course and its derived child classes
+  CreditCourse and NoncreditCourse
 
 
 ## Running the code
