@@ -1,7 +1,35 @@
 """"""
 
 class Student:
+    """
+    Manages student information with grade storage
 
+    Attributes
+    ----------
+    _id : str
+        The unique identifier for a given student.
+    _name : str
+        The full name of a given student.
+    _student_data : a class dict
+        Dictionary to store {student_id: {"name": name, "grades": {course_code: grade}} for all enrolled students.
+
+    Methods
+    -------
+    add_grade(course, grade)
+        Update grade for a given course.
+    get_grades()
+        Retrieve grades for a given student
+    ?? get_info(): seems redundant method compared to the method "__str__(self)"
+        Retrieve a given student's info
+    get_name():
+        Retrieve a given student's name.
+    get_id():
+        Retrieve a given student's ID.
+    get_average():
+        Return a letter grade and GPA for a given student
+    __str__()
+        ??? String representation for a Student object, the method "get_info" seems redundant
+    """
     _student_data = {}
 
     def __init__(self, student_id: int, name: str):
@@ -14,7 +42,7 @@ class Student:
             }
 
     def add_grade(self, course, grade): # Here "course" is an object of class Course
-        """Updates a grade for a course"""
+        """Updates grade for a given course"""
         self._student_data[self._id]["grades"][course.get_course_code()] = {"grade": grade, "credits": course.get_credits()}
 
 
@@ -85,4 +113,3 @@ class Student:
             results = self.get_average()
             string_message = f"Student: {self._name} (ID: {self._id} | Overall Grade: {results["calculated_letter_grade"]} | Overall GPA: {results["calculated_gpa"]})"
         return string_message
-
