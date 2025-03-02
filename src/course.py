@@ -14,7 +14,7 @@ class Course(ABC):
     _course_name : str
         The full name of the course.
     _students : dict
-        Dictionary containing all students enrolled in this course.
+        Dictionary to store {student_id: student_object} for all students enrolled in a given course.
 
     Methods
     -------
@@ -35,7 +35,7 @@ class Course(ABC):
     def __init__(self, course_code: str, course_name: str):
         self._course_code = course_code
         self._course_name = course_name
-        self._students = {}
+        self._students = {} # Dictionary to store {student_id: student_object}
 
     def get_course_code(self) -> str:
         """
@@ -49,7 +49,7 @@ class Course(ABC):
 
     def add_student(self, student: Student) -> None:
         """
-        Enroll a student in the course.
+        Enroll an object of class Student in a given course.
 
         Parameters
         ----------
@@ -73,7 +73,7 @@ class Course(ABC):
 
     def add_grade(self, student: Student, grade: float) -> None:
         """
-        Assign a grade to an enrolled student.
+        Assign a grade to an enrolled student object.
 
         Parameters
         ----------
