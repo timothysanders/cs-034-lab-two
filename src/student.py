@@ -1,5 +1,4 @@
 """"""
-from src.course import Course
 
 class Student:
     """
@@ -43,7 +42,7 @@ class Student:
                 "grades": {}  # Stores course codes and grades
             }
 
-    def add_grade(self, course: Course, grade: float) -> None: # Here "course" is an object of class Course
+    def add_grade(self, course, grade: float) -> None: # Here "course" is an object of class Course
         """
         Updates grade for a given course.
 
