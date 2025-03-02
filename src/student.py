@@ -27,6 +27,8 @@ class Student:
         Retrieve a given student's ID.
     get_average():
         Return a letter grade and GPA for a given student
+    _convert_score_to_grade():
+        Convert a score into a letter grade and GPA.
     __str__()
         ??? String representation for a Student object, the method "get_info" seems redundant
     """
