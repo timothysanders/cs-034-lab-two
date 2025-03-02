@@ -30,6 +30,9 @@ class OttoGrader:
         new_student = Student(student_identifier, student_name)
         self._students[new_student.get_id()] = new_student
 
+    '''
+    Redundant code 
+    *************************
     def get_students(self):
         """
         Displays the currently enrolled students.
@@ -39,6 +42,11 @@ class OttoGrader:
 
         """
         return self._students
+    **************************
+    '''
+
+    def get_student(self, student_id):
+        return self._students.get(student_id)
 
     def add_course(self, course_code: str, course_name: str, credits: int = 0):
         """
@@ -63,8 +71,16 @@ class OttoGrader:
             new_course = NonCreditCourse(course_code, course_name)
         self._courses[new_course.get_course_code()] = new_course
 
+    '''
+    Redundant code 
+    *************************
     def get_courses(self):
         return self._courses
+    *************************
+    '''
+
+    def get_course(self, course_code):
+        return self._courses.get(course_code)
 
     def add_student_to_course(self, student_id, course_code: str):
         """
@@ -84,12 +100,6 @@ class OttoGrader:
         if student_id not in self._students:
             raise ValueError(f"Student {student_id} does not exist")
         self._courses[course_code].add_student(self._students[student_id])
-
-    def get_course(self, course_code):
-        return self._courses.get(course_code)
-
-    def get_student(self, student_id):
-        return self._students.get(student_id)
 
     def record_grade(self, student_id, course_name, grade):
         course = self.get_course(course_name)
