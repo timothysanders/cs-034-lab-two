@@ -61,9 +61,15 @@ class Course(ABC):
         """
         if student.get_id() not in self._students:
             self._students[student.get_id()] = {"grade": None}
-            print(f"Student {student.get_id()} enrolled in {self._course_name}.")
+            print(f"{student.get_name()} (ID: {student.get_id()}) enrolled in {self._course_name}.")
         else:
-            print(f"Student {student.get_id()} is already enrolled in {self._course_name}.")
+            print(f"{student.get_name()} (ID: {student.get_id()}) is already enrolled in {self._course_name}.")
+
+    def get_student(self, student_id: int):
+        if student_id in self._students:
+            return self._students[student_id]
+        else:
+            raise ValueError(f"Student with ID {student_id} is not enrolled in this class!")
 
     def add_grade(self, student: Student, grade: float) -> None:
         """
