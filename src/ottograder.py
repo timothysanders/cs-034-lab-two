@@ -73,7 +73,7 @@ class OttoGrader:
         Parameters
         ----------
         student_id
-        course_id
+        course_code
 
         Returns
         -------
@@ -83,18 +83,27 @@ class OttoGrader:
             raise ValueError(f"Course {course_code} does not exist")
         if student_id not in self._students:
             raise ValueError(f"Student {student_id} does not exist")
-        self._courses[course_code].add_student(student_id)
+        self._courses[course_code].add_student(self._students[student_id])
 
     def get_course(self, course_code):
         return self._courses.get(course_code)
-    def get_student(self, student_id):return self._students.get(student_id)
+
+    def get_student(self, student_id):
+        return self._students.get(student_id)
+
     def record_grade(self, student_id, course_name, grade):
         course = self.get_course(course_name)
         if course:
             student = course.get_student(student_id)
             if student:
-                student.add_grade(course_name, grade)
+                course.add_grade(self.get_student(student_id), grade)
+                # self.get_student(student_id).add_grade(course, grade)
             else:
                 print(f"Student with ID {student_id} not found in {course_name}")
         else:
             print(f"Course {course_name} not found")
+
+    def get_student_gpa(self, student_id: int):
+        student_record = self.get_student(student_id)
+        gpa = student_record.get_average()
+        print(f"{student_record.get_name()} (ID: {student_id}) has a GPA of {gpa["calculated_gpa"]} and an average letter grade of {gpa["calculated_letter_grade"]}")
