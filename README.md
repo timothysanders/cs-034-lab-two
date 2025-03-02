@@ -6,6 +6,8 @@ Implementation of "Otto Grader"-- a student grade manage system
 - Update the record of a student’s grades
 - Retrieve information for a given course
 - Retrieve information for an enrolled student
+- Calculate the average grade of a student
+- GPA calculation for a student
 
 ## OttoGrader Grade Manage System Structure & Architecture
 The code to run the Otto Grader application relies on the following classes
